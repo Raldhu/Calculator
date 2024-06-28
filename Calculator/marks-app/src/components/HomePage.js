@@ -20,7 +20,7 @@ const HomePage = () => {
     try {
       // Validation check for marks exceeding max marks
       for (const subject of subjects) {
-        if (parseInt(subject.marks, 10) > parseInt(subject.maxMarks, 10)) {
+        if (parseFloat(subject.marks, 10) > parseFloat(subject.maxMarks, 10)) {
           window.alert(`Marks for ${subject.name} cannot be greater than Max Marks`);
           return;
         }
@@ -28,8 +28,8 @@ const HomePage = () => {
 
       const marksToSend = subjects.map(subject => ({
         Subject: subject.name,
-        Marks: parseInt(subject.marks, 10),
-        MaxMarks: parseInt(subject.maxMarks, 10),
+        Marks: parseFloat(subject.marks, 10),
+        MaxMarks: parseFloat(subject.maxMarks, 10),
       }));
 
       const response = await fetch("http://localhost:5017/api/marks/calculate", {
